@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Vendedores</title>
+    <link rel="stylesheet" href="../Css/TemaDeCasa.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Vendedores</h1>
+
+        <!-- Formulário para inserir / editar -->
+        <form id="vendedorForm" action="insertVendedor.php" method="post">
+            <input type="hidden" name="acao" id="acao" value="inserir">
+            <div class="form-group">
+                <label for="codigo">Código:</label>
+                <input type="number" name="codigo" id="codigo" required>
+            </div>
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" maxlength="30" required>
+            </div>
+            <div class="form-group">
+                <label for="comissao">Comissão:</label>
+                <input type="number" name="comissao" id="comissao" step="0.01" required>
+            </div>
+            <div class="form-buttons">
+                <button type="submit">Salvar</button>
+                <button type="reset">Limpar</button>
+                <button type="button" onclick="window.location.href='selectVendedor.php'" >Vizualizar vendedores</button>
+            </div>
+        </form>
+
+        
+
+</body>
+
+</html>

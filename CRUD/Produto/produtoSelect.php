@@ -20,15 +20,11 @@
 
       <?php
       // cria conexão
-      $conexao = mysqli_connect("localhost", "root", "", "baseTeste");
-      if (!$conexao) {
-         die("Conexão falhou! " . mysqli_connect_error());
-      } else {
-         echo "Conexão realizada!";
-      }
+      include_once "../Banco/TemaBanco.php";
+      $variavelConexao = conectarBancoDados();
 
       $sql = "SELECT * FROM Produto order by codigo";
-      $resultado = mysqli_query($conexao, $sql);
+      $resultado = mysqli_query($variavelConexao, $sql);
 
       while ($i = mysqli_fetch_assoc($resultado)) {
       ?>
@@ -37,7 +33,7 @@
             <td><?php echo $i['nome']; ?></td>
             <td><?php echo $i['valor']; ?></td>
             <td><?php echo $i['perecivel']; ?></td>
-            <td><a href="<?php echo "delete.php?var-cod=".$i['codigo'] ?>">Excluir</a></td>
+            <td><a href="<?php echo "deleteProduto.php?var-cod=".$i['codigo'] ?>">Excluir</a></td>
             <td><a href="<?php echo"ProdutoFormEditar.php?var_cod=".$i['codigo']. "&var_nome=".$i['nome']."&var_valor=".$i['valor']."&var_tipo=".$i["perecivel"]?>">Alterar</a></td>
          </tr>
 
@@ -49,7 +45,7 @@
    <h4><a href="produto.html">Cadastrar novo PRODUTO</a></h4>
    <?php
    // encerra conexão
-   mysqli_close($conexao);
+   mysqli_close($variavelConexao);
    ?>
 
 </BODY>
